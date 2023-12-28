@@ -24,7 +24,7 @@ def draw_lines(screen, num_cells):
 
 # draws the graphics version of the grid
 # note the use of y and x for rows and columns
-def draw_grid(screen, mat, text = -99):
+def draw_grid(screen, mat, text=-99):
   num_cells = len(mat)
   w,h = screen.get_size()
   cell_size = w/num_cells
@@ -46,10 +46,14 @@ def draw_grid(screen, mat, text = -99):
       elif mat[y][x]==998: # visited
         pygame.draw.circle(screen, (0,0,255), (x*cell_size+cell_size/2, y*cell_size + cell_size/2), cell_size/2)     
       else: # otherwise
-        text = my_font.render(str(mat[y][x]), True, (0,0,0))
+        if mat[y][x] == 0:
+          temp = ''
+        else:
+          temp = str(mat[y][x])
+        text = my_font.render(temp, True, (0,0,0))
         screen.blit(text, (x*cell_size + cell_size/10,y*cell_size+cell_size/2))
 
-def draw_screen(screen, mat, text = -99):
+def draw_screen(screen, mat, text=-99):
   screen.fill((255, 255, 255))
   num_cells = len(mat)
   draw_lines(screen, num_cells)
