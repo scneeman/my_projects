@@ -3,22 +3,21 @@
 # arrange into tuples of 3
 # create 2d list of colors
 
-# define any functions
-def get_pi():
-    f = open("pi_art/pi_million_digits.txt", "r")  # open the file for reading
-    pi = f.read() # read the data into one long string
-    f.close() # close the file to release memory
-    # TODOclean up
-    pi = pi.replace(".", "")
-    pi = pi.replace("\n", "")
-    pi = pi.replace(" ", "")
-    return pi
+import functions as f
 
-pi = "314159"
-cols = []
-for digit in pi:
+# testing
+# cols = []
+# for i in range(0, len(pi), 3):
+#     col = (ord(pi[i]), ord(pi[i+1]), ord(pi[i+2]))
+#     cols.append(col)
+
+# print(cols)
 
 
-# call the get_pi function
-# pi = get_pi()
+pi = f.get_pi()
 # print(len(pi))
+
+# f.single_digit_to_ord(pi, "pi_art/out.jpg")
+
+f.single_digit_to_scaled_greyscale(pi, "pi_art/outgrey.png")
+
