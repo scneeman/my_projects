@@ -17,7 +17,8 @@ import functions as f
 pi = f.get_pi()
 # print(len(pi))
 
-# f.single_digit_to_ord(pi, "pi_art/out.jpg")
+f.single_digit_to_ord(pi, "pi_art/banana.png", "pi_art/out.jpg")
 
-f.single_digit_to_scaled_greyscale(pi, "pi_art/outgrey.png")
+# f.single_digit_to_scaled_greyscale(pi, "pi_art/banana.png", "pi_art/outgrey.png")
+
 
