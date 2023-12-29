@@ -4,8 +4,8 @@ from block import *
 from paddle import *
 
 # setup
-w = 400
-h = 300
+w = 800
+h = 600
 screen = pygame.display.set_mode([w, h])
 
 # TODO create a 'bouncy' object
