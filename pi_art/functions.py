@@ -13,9 +13,10 @@ def get_pi():
     pi = pi.replace(" ", "")
     return pi
 
-
-def single_digit_to_ord(pi, infilename, outfilename):
-    pic = load_file(infilename)
+# i had to load a 'dummy' image
+# i don't know how to create an appropriate numpy array from a 2d list
+def single_digit_to_ord(pi, origname, newname):
+    pic = load_file(origname)
     count = 0
     for r in range(577):
         for c in range(577):
@@ -26,20 +27,20 @@ def single_digit_to_ord(pi, infilename, outfilename):
             pic[r][c] = (temp1, temp2, temp3)
             count += 3
 
-    save_file(pic, outfilename)
+    save_file(pic, newname)
 
 # i had to load a 'dummy' image
 # i don't know how to create an appropriate numpy array from a 2d list
-def single_digit_to_scaled_greyscale(pi, infilename, outfilename):
+def single_digit_to_scaled_greyscale(pi, origname, newname):
     # pic = [[0]*1000 for _ in range(1000)]
-    pic = load_file(infilename)
+    pic = load_file(origname)
     count = 0
     for r in range(1000):
         for c in range(1000):
             temp = int(pi[count])*28 # scale digits 0-9 up to 0-252
             pic[r][c] = (temp, temp, temp)
             count += 1
-    save_file(pic, outfilename)
+    save_file(pic, newname)
 
 
 def load_file(orig):
