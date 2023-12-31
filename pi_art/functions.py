@@ -15,11 +15,11 @@ def get_pi():
 
 # i had to load a 'dummy' image
 # i don't know how to create an appropriate numpy array from a 2d list
-def single_digit_to_ord(pi, origname, newname):
-    pic = load_file(origname)
+def single_digit_to_ord(pi, width, height, newname):
+    pic = [[0]*width for _ in range(height)]
     count = 0
-    for r in range(577):
-        for c in range(577):
+    for r in range(height):
+        for c in range(width):
             # col = (ord(pi[i]), ord(pi[i+1]), ord(pi[i+2]))
             temp1 = int(pi[count])*28
             temp2 = int(pi[count + 1])*28
@@ -29,14 +29,12 @@ def single_digit_to_ord(pi, origname, newname):
 
     save_file(pic, newname)
 
-# i had to load a 'dummy' image
-# i don't know how to create an appropriate numpy array from a 2d list
-def single_digit_to_scaled_greyscale(pi, origname, newname):
-    # pic = [[0]*1000 for _ in range(1000)]
-    pic = load_file(origname)
+
+def single_digit_to_scaled_greyscale(pi, width, height, newname):
+    pic = [[0]*width for _ in range(height)]
     count = 0
-    for r in range(1000):
-        for c in range(1000):
+    for r in range(height):
+        for c in range(width):
             temp = int(pi[count])*28 # scale digits 0-9 up to 0-252
             pic[r][c] = (temp, temp, temp)
             count += 1
@@ -52,5 +50,5 @@ def load_file(orig):
 
 def save_file(mat, filename):
     # print(mat)
-    result = Image.fromarray(mat, 'RGB')
+    result = Image.fromarray(np.uint8(mat))
     result.save(filename)
