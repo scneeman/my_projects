@@ -96,6 +96,116 @@ def spiral(pi, n, newname):
     save_file(pic, newname)
 
 
+# must be square
+def spiral_prime(pi, n, newname):
+    start_row = n//2
+    start_col = n//2
+    row = start_row
+    col = start_col
+    num_times = 1
+    row_v = -1
+    col_v = 1
+    pic = [[0]*n for _ in range(n)]
+    current_value = 1
+
+    # starting pixel
+    # temp = int(pi[current_value-1])*28 # scale digits 0-9 up to 0-252
+    pic[start_row][start_col] = (255,0,0)
+
+    while num_times < n:
+        for r in range(num_times):
+            current_value += 1
+            row += row_v
+            digit = int(pi[current_value-1])
+            if digit in [2, 3, 5, 7]:
+                pic[row][col] = (255,0,0)
+            else:
+                temp = int(pi[current_value-1])*28 # scale digits 0-9 up to 0-252
+                pic[row][col] = (temp, temp, temp)
+        row_v *= -1
+        for c in range(num_times):
+            current_value += 1
+            col += col_v
+            digit = int(pi[current_value-1])
+            if digit in [2, 3, 5, 7]:
+                pic[row][col] = (255,0,0)
+            else:
+                temp = int(pi[current_value-1])*28 # scale digits 0-9 up to 0-252
+                pic[row][col] = (temp, temp, temp)
+        col_v *= -1
+        num_times += 1
+
+    # last time, only 'up' 
+    for i in range(n-1):
+        current_value += 1
+        row += row_v
+        digit = int(pi[current_value-1])
+        if digit in [2, 3, 5, 7]:
+            pic[row][col] = (255,0,0)
+        else:
+            temp = int(pi[current_value-1])*28 # scale digits 0-9 up to 0-252
+            pic[row][col] = (temp, temp, temp)
+
+    save_file(pic, newname)
+
+
+
+
+# must be square
+def spiral_digit(pi, n, newname, target_digit):
+    start_row = n//2
+    start_col = n//2
+    row = start_row
+    col = start_col
+    num_times = 1
+    row_v = -1
+    col_v = 1
+    pic = [[0]*n for _ in range(n)]
+    current_value = 1
+
+    # starting pixel
+    # temp = int(pi[current_value-1])*28 # scale digits 0-9 up to 0-252
+    pic[start_row][start_col] = (255,0,0)
+
+    while num_times < n:
+        for r in range(num_times):
+            current_value += 1
+            row += row_v
+            digit = int(pi[current_value-1])
+            if digit == target_digit:
+                pic[row][col] = (255,0,0)
+            else:
+                temp = int(pi[current_value-1])*28 # scale digits 0-9 up to 0-252
+                pic[row][col] = (temp, temp, temp)
+        row_v *= -1
+        for c in range(num_times):
+            current_value += 1
+            col += col_v
+            digit = int(pi[current_value-1])
+            if digit == target_digit:
+                pic[row][col] = (255,0,0)
+            else:
+                temp = int(pi[current_value-1])*28 # scale digits 0-9 up to 0-252
+                pic[row][col] = (temp, temp, temp)
+        col_v *= -1
+        num_times += 1
+
+    # last time, only 'up' 
+    for i in range(n-1):
+        current_value += 1
+        row += row_v
+        digit = int(pi[current_value-1])
+        if digit == target_digit:
+            pic[row][col] = (255,0,0)
+        else:
+            temp = int(pi[current_value-1])*28 # scale digits 0-9 up to 0-252
+            pic[row][col] = (temp, temp, temp)
+
+    save_file(pic, newname)
+
+
+
+
 
 
 def load_file(orig):
