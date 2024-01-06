@@ -16,9 +16,11 @@ import functions as f
 pi = f.get_pi()
 
 # 577x577
-f.single_digit_to_ord(pi, 577, 577, "pi_art/out.jpg")
+# f.single_digit_to_ord(pi, 577, 577, "pi_art/out.jpg")
 
 # 1000x1000
 # f.single_digit_to_scaled_greyscale(pi, 1000, 1000, "pi_art/outgrey.png")
 
+# 1000x1000
+f.diff_in_digits_to_scaled_greyscale(pi, 1000, 1000, "pi_art/outgrey2.png")
 

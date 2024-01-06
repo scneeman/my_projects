@@ -41,6 +41,23 @@ def single_digit_to_scaled_greyscale(pi, width, height, newname):
     save_file(pic, newname)
 
 
+
+def diff_in_digits_to_scaled_greyscale(pi, width, height, newname):
+    pic = [[0]*width for _ in range(height)]
+    count = 0
+    for r in range(height):
+        for c in range(width):
+            prev_spot = int(pi[count-1])
+            this_spot = int(pi[count])
+            diff = this_spot - prev_spot
+            val = 128 + diff*14
+            pic[r][c] = (val, val, val)
+            count += 1
+    save_file(pic, newname)
+
+
+
+
 def load_file(orig):
     im = Image.open(orig)
     #im.show() # does not work in replit?
