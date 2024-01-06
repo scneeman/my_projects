@@ -22,5 +22,8 @@ pi = f.get_pi()
 # f.single_digit_to_scaled_greyscale(pi, 1000, 1000, "pi_art/outgrey.png")
 
 # 1000x1000
-f.diff_in_digits_to_scaled_greyscale(pi, 1000, 1000, "pi_art/outgrey2.png")
+# f.diff_in_digits_to_scaled_greyscale(pi, 1000, 1000, "pi_art/outgrey2.png")
 
+
+# spiral
+f.spiral(pi, 999, "pi_art/out_spiral.png")

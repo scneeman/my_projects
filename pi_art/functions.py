@@ -13,8 +13,7 @@ def get_pi():
     pi = pi.replace(" ", "")
     return pi
 
-# i had to load a 'dummy' image
-# i don't know how to create an appropriate numpy array from a 2d list
+
 def single_digit_to_ord(pi, width, height, newname):
     pic = [[0]*width for _ in range(height)]
     count = 0
@@ -53,6 +52,47 @@ def diff_in_digits_to_scaled_greyscale(pi, width, height, newname):
             val = 128 + diff*14
             pic[r][c] = (val, val, val)
             count += 1
+    save_file(pic, newname)
+
+
+# must be square
+def spiral(pi, n, newname):
+    start_row = n//2
+    start_col = n//2
+    row = start_row
+    col = start_col
+    num_times = 1
+    row_v = -1
+    col_v = 1
+    pic = [[0]*n for _ in range(n)]
+    current_value = 1
+
+    # starting pixel
+    temp = int(pi[current_value-1])*28 # scale digits 0-9 up to 0-252
+    pic[start_row][start_col] = (temp, temp, temp)
+
+    while num_times < n:
+        for r in range(num_times):
+            current_value += 1
+            row += row_v
+            temp = int(pi[current_value-1])*28 # scale digits 0-9 up to 0-252
+            pic[row][col] = (temp, temp, temp)
+        row_v *= -1
+        for c in range(num_times):
+            current_value += 1
+            col += col_v
+            temp = int(pi[current_value-1])*28 # scale digits 0-9 up to 0-252
+            pic[row][col] = (temp, temp, temp)
+        col_v *= -1
+        num_times += 1
+
+    # last time, only 'up' 
+    for i in range(n-1):
+        current_value += 1
+        row += row_v
+        temp = int(pi[current_value-1])*28 # scale digits 0-9 up to 0-252
+        pic[row][col] = (temp, temp, temp)
+
     save_file(pic, newname)
 
 
