@@ -69,7 +69,7 @@ def spiral(pi, n, newname):
 
     # starting pixel
     temp = int(pi[current_value-1])*28 # scale digits 0-9 up to 0-252
-    pic[start_row][start_col] = (temp, temp, temp)
+    pic[start_row][start_col] = (255, 0, 0)
 
     while num_times < n:
         for r in range(num_times):

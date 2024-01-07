@@ -26,10 +26,10 @@ pi = f.get_pi()
 
 
 # spiral
-# f.spiral(pi, 999, "pi_art/out_spiral.png")
+f.spiral(pi, 999, "pi_art/out_spiral.png")
 
 # spiral primes
-f.spiral_prime(pi, 999, "pi_art/out_spiral_prime.png")
+# f.spiral_prime(pi, 999, "pi_art/out_spiral_prime.png")
 
 
 # look for digit
